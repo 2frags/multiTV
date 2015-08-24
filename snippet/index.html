@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Snippet - multiTV</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">multiTV</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../installation/">Installation</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../template_variable/">Template Variable</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Snippet</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../module/">Module</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../extras/">Extras</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../examples/">Examples</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../contributors/">Contributors</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../donate/">Donate</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../template_variable/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../module/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/Jako/multiTV">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#snippet">Snippet</a></li>
+        
+            <li><a href="#parameters">Parameters</a></li>
+        
+            <li><a href="#placeholder">Placeholder</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="snippet">Snippet</h1>
+<p>The multiTV snippet has to be called to display the content of a multiTV template variable. Call the snippet like this (most expample parameters are using the default values in this example call and could be removed from the call – parameter tvName is required)</p>
+<pre><code>[!multiTV?
+&amp;tvName=`yourMultiTVname`
+&amp;docid=`[*id*]`
+&amp;tplConfig=``
+&amp;outerTpl=`@CODE:&lt;ul&gt;((wrapper))&lt;/ul&gt;`
+&amp;rowTpl=`@CODE:&lt;li&gt;((event)), ((location)), ((price))&lt;/li&gt;`
+&amp;display=`5`
+&amp;offset=`0`
+&amp;rows=`all`
+&amp;where=``
+&amp;randomize=`0`
+&amp;reverse=`0`
+&amp;orderBy=``
+&amp;toPlaceholder=``
+&amp;toJson=`0`
+&amp;published=`1`
+&amp;emptyOutput=`1`
+&amp;noResults=``
+&amp;outputSeparator=``
+&amp;firstClass=`first`
+&amp;lastClass=`last`
+&amp;evenClass=``
+&amp;oddClass=``
+&amp;paginate=`0`
+&amp;offsetKey=`page`
+!]
+</code></pre>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tvName</td>
+<td><strong>(required)</strong> Name of the template variable that contains the multiTV (the column names of the mulitTV are received from the config file)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>docid</td>
+<td>Document id where the custom tv is retreived from (i.e. if the multiTV Snippet is called in a Ditto template)</td>
+<td>Current document id</td>
+</tr>
+<tr>
+<td>tplConfig</td>
+<td>Array key in the config file that contains the output templates configuration (will be prefixed with <code>templates</code>)</td>
+<td>''</td>
+</tr>
+<tr>
+<td>outerTpl</td>
+<td>Outer template: chunkname, filename (value starts with <code>@FILE</code>) or code (value starts with <code>@CODE</code> – placeholders have to be masked by <code>((</code> and <code>))</code>. Usable <a href="#placeholder-in-outertpl">placeholders</a>. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></td>
+<td><code>@CODE:&lt;select name="$tvName"&gt;[+wrapper+]&lt;/select&gt;</code> or custom template in template variable config file</td>
+</tr>
+<tr>
+<td>rowTpl</td>
+<td>Row template: chunkname, filename (value starts with <code>@FILE</code>) or code (value starts with <code>@CODE</code> – placeholders have to be masked by <code>((</code> and <code>))</code>. Usable <a href="#placeholder-in-rowtpl">placeholders</a>. <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup></td>
+<td><code>@CODE:&lt;option value="[+value+]"&gt;[+key+]&lt;/option&gt;</code> or custom template in template variable config file</td>
+</tr>
+<tr>
+<td>display</td>
+<td>Count of rows that are displayed, <code>all</code> for all rows</td>
+<td>5</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>Count of rows from start that are not displayed</td>
+<td>0</td>
+</tr>
+<tr>
+<td>rows</td>
+<td>Comma separated list of row numbers (or all rows) that should be displayed</td>
+<td>all</td>
+</tr>
+<tr>
+<td>where</td>
+<td>JSON encoded array of where clauses to filter the results. Example <a href="#placeholder-in-rowtpl">clauses</a>.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>randomize</td>
+<td>Random order of displayed rows (disables <code>reverse</code> and <code>orderBy</code> parameter)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>reverse</td>
+<td>Reverse order of displayed rows (disables <code>orderBy</code> parameter)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>orderBy</td>
+<td>Column name, column order type and order direction to sort the output (format: <code>name:type direction</code> – type could be <code>text</code> or <code>date</code>, defaults to <code>text</code> – direction defaults to <code>asc</code>)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>toPlaceholder</td>
+<td>The snippet output is assigned to a placeholder named as the parameter value (i.e. [+myPlaceholder+]), single items are assigned to placeholders named as the parameter value followed by the row number (i.e. [+myPlaceholder.1+]). Normal snippet output is suppressed.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup></td>
+<td>-</td>
+</tr>
+<tr>
+<td>toJson</td>
+<td>The snippet output contains the json encoded result of the multitv snippet call. Useful to retreive the multiTV results other snippets by runSnippet</td>
+<td>0</td>
+</tr>
+<tr>
+<td>published</td>
+<td>Display only multiTVs of published (1), unpublished (0) or both (2) kind of documents</td>
+<td>1</td>
+</tr>
+<tr>
+<td>emptyOutput</td>
+<td>Return empty string if the multiTV is empty, otherwise return outer template</td>
+<td>1</td>
+</tr>
+<tr>
+<td>noResults</td>
+<td>No results template: chunkname, filename (value starts with <code>@FILE</code>) or code (value starts with <code>@CODE</code>)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>outputSeparator</td>
+<td>String inserted between two row templates</td>
+<td>empty</td>
+</tr>
+<tr>
+<td>firstClass</td>
+<td>Content of row.class placeholder in the first row</td>
+<td>first</td>
+</tr>
+<tr>
+<td>lastClass</td>
+<td>Content of row.class placeholder in the last row</td>
+<td>last</td>
+</tr>
+<tr>
+<td>evenClass</td>
+<td>Content of row.class placeholder in an even row</td>
+<td>-</td>
+</tr>
+<tr>
+<td>oddClass</td>
+<td>Content of row.class placeholder in an odd row</td>
+<td>-</td>
+</tr>
+<tr>
+<td>paginate</td>
+<td>Show pagination</td>
+<td>0</td>
+</tr>
+<tr>
+<td>offsetKey</td>
+<td>Pagination offset parameter key</td>
+<td>page</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The default templates for outer template and row template could be defined in the config file for the custom template variable. These custom definitions could be overwritten by <code>rowTpl</code> and <code>outerTpl</code> in snippet call. Both template chunks are parsed by PHx (chunkie class).</p>
+<h3 id="where-clause-examples">Where clause examples</h3>
+<p>The <em>where</em> parameter could be set with an JSON encoded array of where clauses. Each where clause has to use the following format: <code>{"fieldname:operator":"value"}</code> <em>fieldname</em> is the name of a multiTV field, <em>operator</em> is the comparing operator, <em>value</em> is the value the fieldname is compared with. Possible operators are <code>=</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>LIKE NOT</code>, <code>LIKE</code>. The default operator is <code>=</code>.  </p>
+<p><code>&amp;where=`{"price":"2000"}`</code> will filter all rows where the mulitTV field price is not 2000.</p>
+<p><code>&amp;where=`{"city:LIKE":"London"}`</code> will filter all rows where the mulitTV field city does not contain London.</p>
+<p>Multiple where clauses are combined with <code>AND</code> i.e. <code>&amp;where=`{"city:LIKE":"London","price":"2000"}`</code> will filter all rows where the mulitTV field city does not contain London and where the mulitTV field price is not 2000.</p>
+<h2 id="placeholder">Placeholder</h2>
+<h3 id="placeholder-in-rowtpl">Placeholder in rowTpl</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"fieldname"</td>
+<td>Each fieldname defined in config file could be used</td>
+</tr>
+<tr>
+<td>iteration</td>
+<td>Contains the iteration of the current multiTV element</td>
+</tr>
+<tr>
+<td>row.number</td>
+<td>Contains the row number of the current multiTV element</td>
+</tr>
+<tr>
+<td>row.class</td>
+<td>FirstClass parameter setting for first displayed row, lastClass parameter setting for last displayed row, evenClass/oddClass parameter setting for even/odd rows.</td>
+</tr>
+<tr>
+<td>row.total</td>
+<td>Contains the count of all displayable rows</td>
+</tr>
+<tr>
+<td>docid</td>
+<td>Value of docid parameter or current document id</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="placeholder-in-outertpl">Placeholder in outerTpl</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrapper</td>
+<td>Contains the output of all rows</td>
+</tr>
+<tr>
+<td>rows.offset</td>
+<td>Contains the count of rows from start that are not displayed</td>
+</tr>
+<tr>
+<td>rows.total</td>
+<td>Contains the count of all displayable rows</td>
+</tr>
+<tr>
+<td>docid</td>
+<td>Value of docid parameter or current document id</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td>Contains the pagination (if parameter pagination is enabled)</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- Piwik -->
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.partout.info/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 12]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<noscript><p><img src="//piwik.partout.info/piwik.php?idsite=12" style="border:0;" alt="" /></p></noscript>
+
+<!-- End Piwik Code -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Older MODX versions don’t like =, ? and &amp; in snippet parameters. If the template code has to use those signs, put the template code in a chunk or change the default templates in the config file.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>If the snippet output is assigned to placeholder and PHx is installed, the page should be set to uncached and the Snippet should be called cached. Otherwise PHx will 'steal' the placeholders before the Snippet could fill them.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>

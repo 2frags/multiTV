@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Template Variable - multiTV</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">multiTV</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../installation/">Installation</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li class="active">
+                            <a href="./">Template Variable</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../snippet/">Snippet</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../module/">Module</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../extras/">Extras</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../examples/">Examples</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../contributors/">Contributors</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../donate/">Donate</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../installation/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../snippet/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/Jako/multiTV">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#template-variable">Template Variable</a></li>
+        
+            <li><a href="#display-mode">Display mode</a></li>
+        
+            <li><a href="#fields">Fields</a></li>
+        
+            <li><a href="#columns">Columns</a></li>
+        
+            <li><a href="#editing-layer">Editing Layer</a></li>
+        
+            <li><a href="#default-output-templates">Default Output Templates</a></li>
+        
+            <li><a href="#other-options">Other options</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="template-variable">Template Variable</h1>
+<p>All options for a custom template variable are set in a PHP Array or JSON config file in the folder <em>configs</em> with the same name as the template variable (otherwise the default config is used) and <em>.config.inc.php</em> or <em>config.json</em> as extension (a JSON file is used in priority to PHP Array file).</p>
+<h2 id="display-mode">Display mode</h2>
+<p>The display mode of the input fields in the multi field list could be set in the key <code>display</code> to <em>horizontal</em> (events example), <em>vertical</em> (images example), <em>single</em>, <em>datatable</em> (links or multicontent example) or <em>dbtable</em> (dbtabledemo example). A multiTV with single display configuration contains only one list element. With a multiTV in <em>dbtable</em> mode a (custom) table in the MODX database could be displayed and edited.</p>
+<h2 id="fields">Fields</h2>
+<p>The fields of the multitv could be defined in the key <code>fields</code>. This key contains an array of fieldnames and each fieldname contains an array of field properties.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>caption</td>
+<td>Caption (horizontal) or label (vertical) for the input</td>
+<td>-</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type of the input (could be set to almost all MODX input types<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> and <code>thumb</code> for thumbnail display of image tvs<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>)</td>
+<td>text</td>
+</tr>
+<tr>
+<td>elements</td>
+<td>Same options as in the <em>input option values</em> of a <a href="http://rtfm.modx.com/evolution/1.0/developers-guide/template-variables/creating-a-template-variable">MODX template variable</a> are possible i.e. for a dropdown with all documents in the MODX root: <code>@SELECT `pagetitle`, `id` FROM `modx_site_content` WHERE parent = 0 ORDER BY `menuindex` ASC</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>default</td>
+<td>Default value for the input. This value could contain calculated parts. There are two placeholders available: <code>{i}</code> contains an autoincremented index <code>{alias}</code> contains the alias of the edited document.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>thumbof</td>
+<td>Name of an image input. A thumbnail of the selected image will be rendered into this area</td>
+<td>-</td>
+</tr>
+<tr>
+<td>width</td>
+<td>Width of the input</td>
+<td>100</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>In datatable mode a layer will be displayed during adding/editing one row. In this editing layer the MODX input type richtext is possible.</p>
+<h2 id="columns">Columns</h2>
+<p>In <em>datatable</em> and <em>dbtable</em> mode the visible columns for the datatable could be defined in the key <code>columns</code>. This key contains an array of column settings. Each column setting contains an array of properties. If a property is not set, the field property in key <code>fields</code> is used.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fieldname</td>
+<td><strong>(required)</strong> Fieldname that is displayed in this column</td>
+<td>-</td>
+</tr>
+<tr>
+<td>caption</td>
+<td>Caption of the column</td>
+<td>Caption for fieldname in <code>fields</code></td>
+</tr>
+<tr>
+<td>width</td>
+<td>Width of the column</td>
+<td>Width for fieldname in <code>fields</code></td>
+</tr>
+<tr>
+<td>render</td>
+<td>Enable rengering of the column content with this PHx capable string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sortable</td>
+<td>Enable sorting for this column by clicking on the column header in <em>datatable</em> or <em>dbtable</em> mode. Only active if sorting is disabled in <a href="#other-options">other options</a></td>
+<td>true</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="editing-layer">Editing Layer</h2>
+<p>In <em>datatable</em> and <em>dbtable</em> mode the content of the editing layer could be defined in the key <code>form</code>. This key contains an array of form tab settings.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>caption</td>
+<td><strong>(required)</strong> Caption for the form tab</td>
+<td>-</td>
+</tr>
+<tr>
+<td>content</td>
+<td><strong>(required)</strong> Associative array of field settings</td>
+<td>-</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Each form tab setting contains an associative array of field properties (the key contains the fieldname in <code>fields</code>). If a field property is not set, the field property in <code>fields</code> is used.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>caption</td>
+<td>Caption for the input</td>
+<td>Caption for fieldname in <code>fields</code></td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="default-output-templates">Default Output Templates</h2>
+<p>The default output templates for the multiTV snippet could be defined in the key <code>templates</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rowTpl</td>
+<td>Default row template chunk for the snippet output. Could be changed in snippet call. See <a href="../multiTV/snippet.html">snippet documentation</a> for possible placeholders</td>
+<td>-</td>
+</tr>
+<tr>
+<td>outerTpl</td>
+<td>Default outer template chunk for the snippet output. Could be changed in snippet call. See <a href="../multiTV/snippet.html">snippet documentation</a> for possible placeholders</td>
+<td>-</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="other-options">Other options</h2>
+<p>The other options for one multiTV could be defined in the key <code>configuration</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>csvseparator</td>
+<td>Column separator for csv clipboard table data. The csv clipboard table data should contain a new line for each row.</td>
+<td>,</td>
+</tr>
+<tr>
+<td>displayLength</td>
+<td>Number of entries displayed by default in <em>datatable</em> and <em>dbtable</em> mode.</td>
+<td>10</td>
+</tr>
+<tr>
+<td>displayLengthMenu</td>
+<td>Entries in the 'number of entries' selector in <em>datatable</em> and <em>dbtable</em> mode.</td>
+<td>10,25,50,100</td>
+</tr>
+<tr>
+<td>enablePaste</td>
+<td>multiTV could contain <em>paste table data</em> link that displays a paste box. In this box you could paste Word/HTML table clipboard data, Google Docs table clipboard data and csv data.</td>
+<td>true</td>
+</tr>
+<tr>
+<td>enableClear</td>
+<td>multiTV could contain <em>clear all</em> link that clears the content of the multiTV</td>
+<td>true</td>
+</tr>
+<tr>
+<td>hideHeader</td>
+<td>Hide the table header in <em>datatable</em> and <em>dbtable</em> mode.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>radioTabs</td>
+<td>Tabs in the datatable editing layer are displayed as radio buttons. The button state is saved in <em>fieldTab</em> key of each multiTV row.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>sortindex</td>
+<td>Field that contains the sort index (to enable draggable sorting in the module or <em>dbtable</em> mode)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sorting</td>
+<td>Enable sorting by clicking on the column header in <em>datatable</em> or <em>dbtable</em> mode. Row reordering by drag &amp; drop will be disabled.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>See the <a href="https://github.com/Jako/multiTV/blob/master/assets/tvs/multitv/configs/multidemo.config.inc.php">multidemo config</a> for all usable vertical settings and the <a href="https://github.com/Jako/multiTV/blob/master/assets/tvs/multitv/configs/multicontent.config.inc.php">multicontent config</a> for all usable datatable settings.</p>
+<!-- Piwik -->
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.partout.info/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 12]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<noscript><p><img src="//piwik.partout.info/piwik.php?idsite=12" style="border:0;" alt="" /></p></noscript>
+
+<!-- End Piwik Code -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Supported MODX input types: text, rawtext, email, number, textareamini, textarea, rawtextarea, htmlarea, date, dropdown, listbox, listbox-multiple, checkbox, option, image, file&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>See <a href="https://github.com/Jako/multiTV/blob/master/assets/tvs/multitv/configs/images.config.inc.php">images config</a> for thumb&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>

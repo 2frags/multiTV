@@ -1,8 +1,0 @@
-name: multiTV
-markdown: kramdown
-pygments: true
-baseurl: /multiTV
-encoding: utf-8
-
-kramdown:
-  input: GFM

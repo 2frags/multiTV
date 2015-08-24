@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Extras - multiTV</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">multiTV</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Home</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../installation/">Installation</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../template_variable/">Template Variable</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../snippet/">Snippet</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../module/">Module</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Extras</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../examples/">Examples</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../contributors/">Contributors</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../donate/">Donate</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../module/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../examples/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/Jako/multiTV">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#phx-modifier">PHx modifier</a></li>
+        
+    
+        <li class="main "><a href="#ditto-filter-extender">Ditto filter extender</a></li>
+        
+            <li><a href="#examples">Examples</a></li>
+        
+    
+        <li class="main "><a href="#update-to-the-new-data-format">Update to the new data format</a></li>
+        
+    
+        <li class="main "><a href="#parameters">Parameters</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h2 id="phx-modifier">PHx modifier</h2>
+<p>Since the JSON string in multiTV starts with <code>[[</code> and ends with <code>]]</code><sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>, you <em>can't</em> check if the multiTV is empty by i.e. <code>[*multittvname:ne=``:then=`not empty`*]</code>.</p>
+<p>But you could to use the PHx modifier in the folder <code>phx-modifier</code> in that case. Move the two files to <code>assets/plugins/phx/modifiers</code> and call it like this <code>[+phx:multitvisempty=`tvname|docid`:then=`xxx`:else=`yyy`+]</code> or like this <code>[+phx:multitvisnotempty=`tvname|docid`:then=`xxx`:else=`yyy`+]</code>. If docid is not set it defaults to current document.</p>
+<h2 id="ditto-filter-extender">Ditto filter extender</h2>
+<p>If you want to filter displayed Ditto rows by the values of multiTV field content, you could use the Ditto multitv filter extender. As all other Ditto filters it filters the row away if the condition is true.</p>
+<p>The extender uses the following parameters</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>multiTvFilterBy</td>
+<td>multiTV name to filter by (required)</td>
+</tr>
+<tr>
+<td>multiTvFilterOptions</td>
+<td>(Array of) json encoded object(s) of filter options</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The following <strong>filter options</strong> could be used</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>mulitTV field name that is used for filtering</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type of the multiTV field content (possible content: date, text)</td>
+</tr>
+<tr>
+<td>value</td>
+<td>The value the multiTV field content is filtered with</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>Mode for filtering the multiTV field content</td>
+</tr>
+<tr>
+<td>conjunction</td>
+<td>Logical conjunction with the previous filter result (AND/OR)</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The following modes could be used for <strong>text</strong> type:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contains</td>
+<td>filtered if one value contains filterValue</td>
+</tr>
+<tr>
+<td>allcontains</td>
+<td>filtered if all values containing filterValue</td>
+</tr>
+<tr>
+<td>containsnot</td>
+<td>filtered if one value not contains filterValue</td>
+</tr>
+<tr>
+<td>allcontainsnot</td>
+<td>filtered if all values not containing filterValue</td>
+</tr>
+<tr>
+<td>is</td>
+<td>filtered if one value is filterValue</td>
+</tr>
+<tr>
+<td>allis</td>
+<td>filtered if all values are filterValue</td>
+</tr>
+<tr>
+<td>isnot</td>
+<td>filtered if one value is not filterValue</td>
+</tr>
+<tr>
+<td>allisnot</td>
+<td>filtered if all values are not filterValue</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The following modes could be used for <strong>date</strong> type:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>before</td>
+<td>filtered if one value is before filterValue</td>
+</tr>
+<tr>
+<td>beforeall</td>
+<td>filtered if all values are before filterValue</td>
+</tr>
+<tr>
+<td>equal</td>
+<td>filtered if one value is equal filterValue</td>
+</tr>
+<tr>
+<td>equalall</td>
+<td>filtered if all values are equal filterValue</td>
+</tr>
+<tr>
+<td>after</td>
+<td>filtered if one value is after filterValue</td>
+</tr>
+<tr>
+<td>afterall</td>
+<td>filtered if one value is after filterValue</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<p>The following example displays all documents within containers 3, 4, and 5 where the multiTV <code>event</code> values in column <code>title</code> not containing <code>Important</code> in any multiTV row.</p>
+<pre><code>[[Ditto?
+&amp;parents=`3,4,5`
+&amp;display=`all`
+&amp;tpl=`...`
+&amp;extenders=`@FILE assets/tvs/multitv/dittoExtender/multitvfilter.extender.inc.php`
+&amp;multiTvFilterBy=`event`
+&amp;multiTvFilterOptions=`[{&quot;name&quot;:&quot;title&quot;,&quot;type&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Important&quot;,&quot;mode&quot;:&quot;contains&quot;}]`]]
+]]
+</code></pre>
+
+<p>If you want to filter Ditto by several multiTV values, you ave to append an option object to the <code>multiTvFilterOptions</code>. The next example will display all documents within containers 3, 4, and 5 where the multiTV <code>event</code> values in column <code>title</code> not containing <code>Important</code> and column <code>location</code> is <code>Outdoor</code> in any multiTV row.</p>
+<pre><code>[[Ditto?
+&amp;parents=`3,4,5`
+&amp;display=`all`
+&amp;tpl=`...`
+&amp;extenders=`@FILE assets/tvs/multitv/dittoExtender/multitvfilter.extender.inc.php`
+&amp;multiTvFilterBy=`event,event`
+&amp;multiTvFilterOptions=`[{&quot;name&quot;:&quot;title&quot;,&quot;type&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Important&quot;,&quot;mode&quot;:&quot;contains&quot;},{&quot;name&quot;:&quot;location&quot;,&quot;type&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Outdoor&quot;,&quot;mode&quot;:&quot;allisnot&quot;,&quot;conjunction&quot;:&quot;OR&quot;}]`]]
+]]
+</code></pre>
+
+<h2 id="update-to-the-new-data-format">Update to the new data format</h2>
+<p>Version 1.4.11 of multiTV uses a new data format (the column names are saved as key with each value). The custom tv and the snippet code supports the old and new format, so you don't have to update your multiTVs. It is only nessesary, if you want to add/remove columns in your multiTVs.</p>
+<p>Create a new snippet called updateTV with the following snippet code</p>
+<pre><code>&lt;?php
+return include(MODX_BASE_PATH.'assets/tvs/multitv/updatetv.snippet.php');
+?&gt;
+</code></pre>
+
+<p>Call the snippet on one (temporary) MODX document like this:</p>
+<pre><code>[!updateTV?
+&amp;tvNames=`yourMultiTVname1,yourMultiTVname2`
+!]
+</code></pre>
+
+<h2 id="parameters">Parameters</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tvNames</td>
+<td><strong>(required)</strong> comma separated list of template variable names that contain multiTV data</td>
+<td>-</td>
+</tr>
+<tr>
+<td>{:.table .table-striped .table-hover}</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- Piwik -->
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.partout.info/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 12]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<noscript><p><img src="//piwik.partout.info/piwik.php?idsite=12" style="border:0;" alt="" /></p></noscript>
+
+<!-- End Piwik Code -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The JSON string the multitv is converted to starts with <code>[[</code> and ends with <code>]]</code> so the MODX parser thinks it contains a snippet and you can't place the template variable directly in the template.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>
